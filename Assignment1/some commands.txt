@@ -1,0 +1,53 @@
+docker start <id>
+docker exec -it -v  /bin/bash
+
+docker pull suhothayan/hadoop-spark-pig-hive:2.9.2
+docker run -it -v /d/_Study/BigData/Assignment1/MapReduce_Assignments:/Assignment1 suhothayan/hadoop-spark-pig-hive:2.9.2
+
+hadoop fs -put books.json input
+hadoop fs -put records.json input
+hadoop fs -put friends.json input
+hadoop fs -put friends.json input
+hadoop fs -put dna.json input
+hadoop fs -put matrix.json input
+
+hadoop fs -getmerge /user/root/output/out output_hadoop.txt
+hadoop fs -rm -r /user/root/output/out
+
+hadoop jar /usr/local/hadoop-2.9.2/share/hadoop/tools/lib/hadoop-streaming-2.9.2.jar -D mapred.reduce.tasks=5 -mapper "python3 /Assignment1/problem1/problem1_mapper.py " -reducer " python3 /Assignment1/problem1/problem1_reducer.py " -input /user/root/input/books.json -output /user/root/output/out
+hadoop jar /usr/local/hadoop-2.9.2/share/hadoop/tools/lib/hadoop-streaming-2.9.2.jar -D mapred.reduce.tasks=5 -mapper "python3 /Assignment1/problem2/problem2_mapper.py " -reducer " python3 /Assignment1/problem2/problem2_reducer.py " -input /user/root/input/records.json -output /user/root/output/out
+hadoop jar /usr/local/hadoop-2.9.2/share/hadoop/tools/lib/hadoop-streaming-2.9.2.jar -D mapred.reduce.tasks=5 -mapper "python3 /Assignment1/problem3/problem3_mapper.py " -reducer " python3 /Assignment1/problem3/problem3_reducer.py " -input /user/root/input/friends.json -output /user/root/output/out
+hadoop jar /usr/local/hadoop-2.9.2/share/hadoop/tools/lib/hadoop-streaming-2.9.2.jar -D mapred.reduce.tasks=5 -mapper "python3 /Assignment1/problem4/problem4_mapper.py " -reducer " python3 /Assignment1/problem4/problem4_reducer.py " -input /user/root/input/friends.json -output /user/root/output/out
+hadoop jar /usr/local/hadoop-2.9.2/share/hadoop/tools/lib/hadoop-streaming-2.9.2.jar -D mapred.reduce.tasks=5 -mapper "python3 /Assignment1/problem5/problem5_mapper.py " -reducer " python3 /Assignment1/problem5/problem5_reducer.py " -input /user/root/input/dna.json -output /user/root/output/out
+hadoop jar /usr/local/hadoop-2.9.2/share/hadoop/tools/lib/hadoop-streaming-2.9.2.jar -D mapred.reduce.tasks=5 -mapper "python3 /Assignment1/problem6/problem6_mapper.py " -reducer " python3 /Assignment1/problem6/problem6_reducer.py " -input /user/root/input/matrix.json -output /user/root/output/out
+
+
+
+±¾µØµ÷ÊÔ£º
+cat <input path> | python <path to mapper script> | sort -t $¡¯\t¡¯ -k1,1 | python <path to reducer script> > <output path>
+cat words.json | python wordcountMapper.py | sort -t $'\t' -k1,1 | python wordcountReducer.py > output.txt
+cat books.json | python problem1_mapper.py | sort -t $'\t' -k1,1 | python problem1_reducer.py > output.txt
+cat records.json | python problem2_mapper.py | sort -t $'\t' -k1,1 | python problem2_reducer.py > output.txt
+cat friends.json | python problem3_mapper.py | sort -t $'\t' -k1,1 | python problem3_reducer.py > output.txt
+cat friends.json | python problem4_mapper.py | sort -t $'\t' -k1,1 | python problem4_reducer.py > output.txt
+cat dna.json | python problem5_mapper.py | sort -t $'\t' -k1,1 | python problem5_reducer.py > output.txt
+cat matrix.json | python problem6_mapper.py | sort -t $'\t' -k1,1 | python problem6_reducer.py > output.txt
+
+
+D:/_Study/BigData/Assignment1/MapReduce_Assignments/wordcount/python
+D:\_Study\BigData\Assignment1\MapReduce_Assignments\wordcount\python
+
+D:/_Study/BigData/Assignment1/MapReduce_Assignments/problem6
+
+
+SPARK:
+spark-submit /Assignment1/problem1/problem1_spark.py
+spark-submit /Assignment1/problem2/problem2_spark.py
+spark-submit /Assignment1/problem3/problem3_spark.py
+spark-submit /Assignment1/problem4/problem4_spark.py
+spark-submit /Assignment1/problem5/problem5_spark.py
+spark-submit /Assignment1/problem6/problem6_spark.py
+
+
+a = -b[1]*3 - ca/2;
+	b[2] = (-ca - 1) + '3' - (-4*b[1]);
