@@ -1,3 +1,18 @@
+# Special
+Chinese_spam_mails/
+Assignment2/ChineseSpamMail/*.csv
+.idea/
+
+
+# IntelliJ
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -113,6 +128,8 @@ venv.bak/
 # Spyder project settings
 .spyderproject
 .spyproject
+
+
 
 # Rope project settings
 .ropeproject
